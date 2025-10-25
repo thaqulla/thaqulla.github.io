@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  clerk-app: #サービス名
+    container_name: clerk-container
+    build: .
+    volumes: #バインドマウント
+      - ./:/usr/src/app
+      - ./node_modules:/app/node_modules
+    command: npm run dev
+    env_file:
+      - .env.local
+    ports:
+      - "3030:3000"
+volumes:
+  node_modules:
