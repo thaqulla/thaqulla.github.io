@@ -1,27 +1,21 @@
 "use client";
 
-import {
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { Button, IconButton } from "@chakra-ui/react";
+import { RiMailLine } from "react-icons/ri"
+
+import { useColorMode } from "@/components/ui/color-mode"
+import { LuMoon, LuSun } from "react-icons/lu"
 
 export default function CustomHeader() {
+  const { toggleColorMode, colorMode } = useColorMode()
   return (
     <header className="flex justify-end items-center p-4 gap-4 h-16">
-      <SignedOut>
-        <SignInButton />
-        <SignUpButton>
-          <button className="bg-[#6c47ff] text-ceramic-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
-            Sign Up
-          </button>
-        </SignUpButton>
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
+      <Button colorPalette="teal" variant="solid">
+        <RiMailLine /> Email
+      </Button>
+      <IconButton onClick={toggleColorMode} variant="outline" size="sm">
+        {colorMode === "light" ? <LuSun /> : <LuMoon />}
+      </IconButton>
     </header>
   );
 }
