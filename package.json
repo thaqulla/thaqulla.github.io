@@ -1,11 +1,13 @@
 {
-  "name": "github pages",
+  "name": "github_pages",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier --write .",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@chakra-ui/react": "^3.28.0",
@@ -18,9 +20,12 @@
     "react-icons": "^5.5.0"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "eslint-config-next": "^16.0.1",
+    "prettier": "^3.6.2",
     "typescript": "^5"
   }
 }

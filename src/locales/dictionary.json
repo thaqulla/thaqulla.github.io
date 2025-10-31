@@ -1,0 +1,24 @@
+{
+  "greeting": {
+    "ja": "こんにちは、{{name}}さん！",
+    "en": "Hello, {{name}}!",
+    "fr": "Bonjour, {{name}}!"
+  },
+  "logout": {
+    "ja": "ログアウト",
+    "en": "Logout",
+    "fr": "Déconnexion"
+  },
+  "welcome": {
+    "title": {
+      "ja": "ようこそ",
+      "en": "Welcome",
+      "fr": "Bienvenue"
+    },
+    "message": {
+      "ja": "Next.js 多言語対応へ",
+      "en": "to Next.js multilingual support",
+      "fr": "au support multilingue de Next.js"
+    }
+  }
+}
