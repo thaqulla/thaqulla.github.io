@@ -1,17 +1,18 @@
 "use client";
 
-import Image from "next/image";
-import { Button, Center, Flex , Text, Link } from "@chakra-ui/react";
-
-import { useColorMode } from "@/components/ui/color-mode";
-import CustomHeader from "@/components/header";
-import CustomFooter from "@/components/footer";
-import { EXTERNAL_LINKS } from "@/constants/externalLinks";
-
-import { FaGithub, FaYoutube, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaTwitter, FaYoutube } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 
+import Image from "next/image";
+
+import { EXTERNAL_LINKS } from "@/constants/externalLinks";
+import { Button, Center, Flex, Link, Text } from "@chakra-ui/react";
+
 import styles from "@/app/page.module.css";
+
+import CustomFooter from "@/components/footer";
+import CustomHeader from "@/components/header";
+import { useColorMode } from "@/components/ui/color-mode";
 
 export default function Home() {
   const { colorMode } = useColorMode();
