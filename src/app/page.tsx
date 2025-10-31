@@ -1,12 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import { Button, Center, Flex , Text, Link } from "@chakra-ui/react";
 
 import { useColorMode } from "@/components/ui/color-mode";
 import CustomHeader from "@/components/header";
+import CustomFooter from "@/components/footer";
 import { EXTERNAL_LINKS } from "@/constants/externalLinks";
 
-import styles from "./page.module.css";
+import { FaGithub, FaYoutube, FaTwitter } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
+
+import styles from "@/app/page.module.css";
 
 export default function Home() {
   const { colorMode } = useColorMode();
@@ -14,95 +19,103 @@ export default function Home() {
     <div className={styles.page}>
       <CustomHeader />
       <main className={styles.main}>
-        <Image
+        <Center>
+          <Image
             className={styles.logo}
-            src={colorMode === "light" ? "/nextjs/black.svg":"/nextjs/white.svg"}
+            src={colorMode === "light" ? "/logo/black.svg" : "/logo/white.svg"}
             alt="Next.js logo"
             width={180}
             height={38}
             priority
           />
+        </Center>
+
+        <Image
+          className={styles.logo}
+          src={
+            colorMode === "light" ? "/nextjs/black.svg" : "/nextjs/white.svg"
+          }
+          alt="Next.js logo"
+          width={180}
+          height={38}
+          priority
+        />
         <ol>
           <li>
             Get started by editing <code>src/app/page.tsx</code>.
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href={EXTERNAL_LINKS.vercel_new}
+        <Flex gap={4}>
+          <Link
+            href={EXTERNAL_LINKS.github}
             target="_blank"
             rel="noopener noreferrer"
+            _hover={{ textDecoration: "none" }}
           >
-            <Image
-              className={styles.logo}
-              src={
-                colorMode === "light"
-                  ? "/vercel/black.svg"
-                  : "/vercel/white.svg"
-              }
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href={EXTERNAL_LINKS.nextjs_docs}
+            <Button colorPalette="gray" variant="outline">
+              <FaGithub />
+              <Text>GitHub</Text>
+            </Button>
+          </Link>
+          <Link
+            href={EXTERNAL_LINKS.qiita}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.secondary}
+            _hover={{ textDecoration: "none" }}
           >
-            Read our docs
-          </a>
-        </div>
+            <Button
+              rel="noopener noreferrer"
+              // variant="ghost"
+              bg={colorMode === "light" ? "#55C500" : "#fff"}
+              _hover={{
+                bg: colorMode === "light" ? "#55C500" : "#fff",
+                // transform: "scale(1.05)",
+              }}
+              p={2}
+            >
+              <Image
+                aria-hidden
+                src={
+                  colorMode === "light"
+                    ? "/qiita/color.svg"
+                    : "/qiita/monochrome.svg"
+                }
+                alt="Qiita"
+                width={64}
+                height={64}
+              />
+            </Button>
+          </Link>
+          <Link
+            href={EXTERNAL_LINKS.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+            _hover={{ textDecoration: "none" }}
+          >
+            <Button colorPalette="red" variant="outline">
+              <FaYoutube color="#ff0000" />
+              Youtube
+            </Button>
+          </Link>
+          <Link
+            href={EXTERNAL_LINKS.twitter}
+            target="_blank"
+            rel="noopener noreferrer"
+            _hover={{ textDecoration: "none" }}
+          >
+            <Button colorPalette="blue" variant="outline">
+              {colorMode === "light" ? (
+                <FaTwitter color="#00acee" />
+              ) : (
+                <FaSquareXTwitter color="#fff" />
+              )}
+              <Text>{colorMode === "light" ? "Twitter" : "X(旧Twitter)"}</Text>
+            </Button>
+          </Link>
+        </Flex>
       </main>
-      <footer className={styles.footer}>
-        <a
-          href={EXTERNAL_LINKS.nextjs_learn}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href={EXTERNAL_LINKS.vercel_templates}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href={EXTERNAL_LINKS.nextjs_org}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <CustomFooter />
     </div>
   );
 }
