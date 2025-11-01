@@ -1,8 +1,21 @@
-name: Hello
+name: Hello_and_env_test
+
 on: push
+
 jobs:
   hello:
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+      NEXT_PUBLIC_MESSAGE: ${{ secrets.NEXT_PUBLIC_MESSAGE }}
+      VARIABLE: ${{ secrets.VARIABLE }}
+
     steps:
-      - run: echo "Hello world"
       - uses: actions/checkout@v4
+
+      - name: Hello world
+        run: |
+          echo "Hello world"
+          echo "NODE_ENV=$NODE_ENV"
+          echo "NEXT_PUBLIC_MESSAGE=$NEXT_PUBLIC_MESSAGE"
+          echo "VARIABLE=$VARIABLE"

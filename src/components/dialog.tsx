@@ -20,9 +20,7 @@ export default function CustomDialog() {
               <Dialog.Title>Dialog Title</Dialog.Title>
             </Dialog.Header>
             <Dialog.Body>
-              <Text>
-                Lorem ipsum dolor sit.
-              </Text>
+              <Text>Lorem ipsum dolor sit.</Text>
             </Dialog.Body>
             <Dialog.Footer>
               <Dialog.ActionTrigger asChild>

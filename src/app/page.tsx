@@ -115,6 +115,7 @@ export default function Home() {
             </Button>
           </Link>
         </Flex>
+        <p>{process.env.NEXT_PUBLIC_MESSAGE}</p>
       </main>
       <CustomFooter />
     </div>
