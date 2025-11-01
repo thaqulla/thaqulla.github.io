@@ -5,19 +5,15 @@ on: push
 jobs:
   hello:
     runs-on: ubuntu-latest
-    environment:
-      name: production   # ← GitHub上の「Environment」設定を使う
-    env:
-      NODE_ENV: production
-      NEXT_PUBLIC_MESSAGE: ${{ secrets.NEXT_PUBLIC_MESSAGE }}
-      VARIABLE: ${{ secrets.VARIABLE }}
-
+    environment: production   # ← これが重要！
     steps:
       - uses: actions/checkout@v4
-
-      - name: Hello world
+      - name: Show environment
         run: |
-          echo "Hello world"
           echo "NODE_ENV=$NODE_ENV"
           echo "NEXT_PUBLIC_MESSAGE=$NEXT_PUBLIC_MESSAGE"
           echo "VARIABLE=$VARIABLE"
+        env:
+          NODE_ENV: production
+          NEXT_PUBLIC_MESSAGE: ${{ secrets.NEXT_PUBLIC_MESSAGE }}
+          VARIABLE: ${{ secrets.VARIABLE }}
