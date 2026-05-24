@@ -111,7 +111,7 @@ export default function Home() {
               ) : (
                 <FaSquareXTwitter color="#fff" />
               )}
-              <Text>{colorMode === "light" ? "Twitter" : "X(旧Twitter)"}</Text>
+              <Text>{colorMode === "light" ? "X(旧Twitter)" : "X(旧Twitter)"}</Text>
             </Button>
           </Link>
         </Flex>
