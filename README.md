@@ -1,6 +1,6 @@
 # thaqulla.github.io
 
-`thaqulla.github.io` の個人サイトです。  
+`thaqulla.github.io` の個人サイトです。
 TanStack Start + SCSS で作られた、プロフィール兼リンク集のようなポートフォリオページになっています。
 
 ## 何をしているリポジトリか
@@ -57,6 +57,14 @@ npm run dev
 ```bash
 npm run build
 ```
+
+GitHub Actions と同じ依存関係のインストール、Viteビルド、デプロイ成果物の生成をローカルで確認する場合は、次を実行します。
+
+```bash
+npm run verify:actions
+```
+
+最後に `DEPLOY CHECK PASSED` と表示されれば、GitHub Pagesへ渡す成果物まで生成できています。
 
 ## 静的出力
 

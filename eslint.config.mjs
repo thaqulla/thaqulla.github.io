@@ -13,6 +13,15 @@ const eslintConfig = tseslint.config(
       "build/**",
     ],
   },
+  {
+    files: ["scripts/**/*.mjs"],
+    languageOptions: {
+      globals: {
+        console: "readonly",
+        process: "readonly",
+      },
+    },
+  },
 );
 
 export default eslintConfig;
