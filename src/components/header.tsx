@@ -4,7 +4,6 @@ import { LuMoon, LuSun } from "react-icons/lu";
 import { RiMailLine } from "react-icons/ri";
 
 import { t } from "@/lib/i18n";
-import { Button, HStack, IconButton, Text } from "@chakra-ui/react";
 
 import CustomDialog from "@/components/dialog";
 import { useColorMode } from "@/components/ui/color-mode";
@@ -19,30 +18,29 @@ export default function CustomHeader() {
   };
 
   return (
-    <header className="flex justify-end items-center p-4 gap-4 h-16">
-      <Button colorPalette="teal" variant="solid" onClick={handleClick}>
+    <header className="site-header">
+      <button className="button button-primary" type="button" onClick={handleClick}>
         <RiMailLine /> {t("common.email", language)}
-      </Button>
-      <Text>{t("greeting", language, { name: "太郎" })}</Text>
+      </button>
+      <span className="greeting">{t("greeting", language, { name: "太郎" })}</span>
 
       {/* Language Switcher */}
-      <HStack gap={1}>
+      <div className="language-switcher">
         {(["ja", "en", "fr"] as const).map((lang) => (
-          <Button
+          <button
             key={lang}
-            size="sm"
-            variant={language === lang ? "solid" : "outline"}
-            colorPalette={language === lang ? "blue" : "gray"}
+            className={`language-button ${language === lang ? "is-active" : ""}`}
+            type="button"
             onClick={() => setLanguage(lang)}
           >
             {lang.toUpperCase()}
-          </Button>
+          </button>
         ))}
-      </HStack>
+      </div>
 
-      <IconButton onClick={toggleColorMode} variant="outline" size="sm">
+      <button className="icon-button" type="button" aria-label="Toggle color mode" onClick={toggleColorMode}>
         {colorMode === "light" ? <LuSun /> : <LuMoon />}
-      </IconButton>
+      </button>
       <CustomDialog />
     </header>
   );

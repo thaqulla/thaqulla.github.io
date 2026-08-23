@@ -2,11 +2,9 @@
 
 import { EXTERNAL_LINKS } from "@/constants/externalLinks";
 
-import styles from "@/app/page.module.css";
-
 export default function CustomFooter() {
   return (
-    <footer className={styles.footer}>
+    <footer className="site-footer">
       <a
         href={EXTERNAL_LINKS.tanstack_docs}
         target="_blank"

@@ -2,10 +2,8 @@ import { FaGithub, FaYoutube } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 
 import { createFileRoute } from "@tanstack/react-router";
-import { Button, Center, Flex, Heading, Link, Text, VStack } from "@chakra-ui/react";
 
 import { EXTERNAL_LINKS } from "@/constants/externalLinks";
-import styles from "@/app/page.module.css";
 import CustomFooter from "@/components/footer";
 import CustomHeader from "@/components/header";
 import { useColorMode } from "@/components/ui/color-mode";
@@ -19,50 +17,48 @@ function Home() {
   const { language } = useLanguage();
 
   return (
-    <div className={styles.page}>
+    <div className="page">
       <CustomHeader />
-      <main className={styles.main}>
-        <Center mb={6}>
+      <main className="main">
+        <div className="logo-container">
           <img
-            className={styles.logo}
+            className="logo"
             src={colorMode === "light" ? "/logo/black.svg" : "/logo/white.svg"}
             alt="Portfolio logo"
             width={180}
             height={38}
           />
-        </Center>
+        </div>
 
-        <Text fontSize="2xl" fontWeight="bold" textAlign="center">
+        <p className="framework-label">
           TanStack Start
-        </Text>
+        </p>
 
-        <VStack gap={2} mb={8}>
-          <Heading as="h1" size="2xl">
+        <section className="welcome">
+          <h1>
             {t("welcome.title", language)}
-          </Heading>
-          <Text fontSize="lg" opacity={0.7}>
+          </h1>
+          <p className="welcome-message">
             {t("welcome.message", language)}
-          </Text>
-        </VStack>
+          </p>
+        </section>
 
-        <Flex gap={4} mb={8}>
-          <Link href={EXTERNAL_LINKS.github} target="_blank" rel="noopener noreferrer" _hover={{ textDecoration: "none" }}>
-            <Button colorPalette="gray" variant="outline"><FaGithub /><Text>{t("common.github", language)}</Text></Button>
-          </Link>
-          <Link href={EXTERNAL_LINKS.qiita} target="_blank" rel="noopener noreferrer" _hover={{ textDecoration: "none" }}>
-            <Button bg={colorMode === "light" ? "#55C500" : "#fff"} _hover={{ bg: colorMode === "light" ? "#55C500" : "#fff" }} p={2}>
-              <img src={colorMode === "light" ? "/qiita/color.svg" : "/qiita/monochrome.svg"} alt="Qiita" width={64} height={64} />
-            </Button>
-          </Link>
-          <Link href={EXTERNAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" _hover={{ textDecoration: "none" }}>
-            <Button colorPalette="red" variant="outline"><FaYoutube color="#ff0000" />{t("common.youtube", language)}</Button>
-          </Link>
-          <Link href={EXTERNAL_LINKS.twitter} target="_blank" rel="noopener noreferrer" _hover={{ textDecoration: "none" }}>
-            <Button colorPalette="blue" variant="outline"><FaSquareXTwitter color={colorMode === "light" ? "#000" : "#fff"} /><Text>{t("common.twitter", language)}</Text></Button>
-          </Link>
-        </Flex>
+        <nav className="social-links" aria-label="Social links">
+          <a className="button button-outline" href={EXTERNAL_LINKS.github} target="_blank" rel="noopener noreferrer">
+            <FaGithub /> {t("common.github", language)}
+          </a>
+          <a className="button qiita-button" href={EXTERNAL_LINKS.qiita} target="_blank" rel="noopener noreferrer">
+            <img src={colorMode === "light" ? "/qiita/color.svg" : "/qiita/monochrome.svg"} alt="Qiita" width={64} height={64} />
+          </a>
+          <a className="button button-outline youtube-button" href={EXTERNAL_LINKS.youtube} target="_blank" rel="noopener noreferrer">
+            <FaYoutube /> {t("common.youtube", language)}
+          </a>
+          <a className="button button-outline twitter-button" href={EXTERNAL_LINKS.twitter} target="_blank" rel="noopener noreferrer">
+            <FaSquareXTwitter /> {t("common.twitter", language)}
+          </a>
+        </nav>
 
-        {import.meta.env.VITE_MESSAGE && <Text fontSize="md" fontStyle="italic">{import.meta.env.VITE_MESSAGE}</Text>}
+        {import.meta.env.VITE_MESSAGE && <p className="message">{import.meta.env.VITE_MESSAGE}</p>}
       </main>
       <CustomFooter />
     </div>

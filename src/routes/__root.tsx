@@ -2,7 +2,7 @@ import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-r
 
 import { Provider } from "@/components/ui/provider";
 
-import "@/app/globals.css";
+import "@/styles/main.scss";
 
 export const Route = createRootRoute({
   head: () => ({

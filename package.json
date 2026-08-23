@@ -11,8 +11,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.28.0",
-    "@emotion/react": "^11.14.0",
     "@tanstack/react-router": "^1.132.0",
     "@tanstack/react-start": "^1.132.0",
     "react": "19.2.0",
@@ -29,6 +27,7 @@
     "@vitejs/plugin-react": "^5.0.4",
     "eslint": "^9.39.1",
     "prettier": "^3.6.2",
+    "sass": "^1.93.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.3"
   }

@@ -1,7 +1,7 @@
 # thaqulla.github.io
 
 `thaqulla.github.io` の個人サイトです。  
-TanStack Start + Chakra UI で作られた、プロフィール兼リンク集のようなポートフォリオページになっています。
+TanStack Start + SCSS で作られた、プロフィール兼リンク集のようなポートフォリオページになっています。
 
 ## 何をしているリポジトリか
 
@@ -34,7 +34,7 @@ TanStack Start + Chakra UI で作られた、プロフィール兼リンク集�
 - TanStack Router
 - React 19
 - TypeScript
-- Chakra UI
+- SCSS（`src/styles/main.scss` に集約）
 - 自前のカラーモードContext
 - react-icons
 
