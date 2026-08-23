@@ -66,7 +66,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-tanstack-start-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }} --include=dev
       - name: Build with TanStack Start
         run: ${{ steps.detect-package-manager.outputs.runner }} vite build
       - name: Upload artifact
