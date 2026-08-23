@@ -2,16 +2,18 @@
 
 import { ChakraProvider, ClientOnly, defaultSystem } from "@chakra-ui/react";
 
-import { ColorModeProvider, type ColorModeProviderProps } from "./color-mode";
+import { ColorModeProvider } from "./color-mode";
+import { LanguageProvider } from "./language-context";
 
 export function Provider({
   children,
-  ...props
-}: ColorModeProviderProps & { children: React.ReactNode }) {
+}: { children: React.ReactNode }) {
   return (
     <ChakraProvider value={defaultSystem}>
       <ClientOnly>
-        <ColorModeProvider {...props}>{children}</ColorModeProvider>
+        <ColorModeProvider>
+          <LanguageProvider>{children}</LanguageProvider>
+        </ColorModeProvider>
       </ClientOnly>
     </ChakraProvider>
   );

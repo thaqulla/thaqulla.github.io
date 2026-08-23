@@ -1,8 +1,8 @@
 version: "3"
 
 services:
-  clerk-app: #サービス名
-    container_name: clerk-container
+  portfolio-app: # サービス名
+    container_name: portfolio-container
     build: .
     volumes: #バインドマウント
       - ./:/usr/src/app
@@ -11,6 +11,6 @@ services:
     env_file:
       - .env.local
     ports:
-      - "3030:3000"
+      - "3030:5173"
 volumes:
   node_modules:

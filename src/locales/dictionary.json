@@ -16,9 +16,53 @@
       "fr": "Bienvenue"
     },
     "message": {
-      "ja": "Next.js 多言語対応へ",
-      "en": "to Next.js multilingual support",
-      "fr": "au support multilingue de Next.js"
+      "ja": "TanStack Start 多言語対応へ",
+      "en": "to TanStack Start multilingual support",
+      "fr": "au support multilingue de TanStack Start"
+    }
+  },
+  "common": {
+    "email": {
+      "ja": "メール",
+      "en": "Email",
+      "fr": "Email"
+    },
+    "github": {
+      "ja": "GitHub",
+      "en": "GitHub",
+      "fr": "GitHub"
+    },
+    "youtube": {
+      "ja": "YouTube",
+      "en": "YouTube",
+      "fr": "YouTube"
+    },
+    "twitter": {
+      "ja": "X(旧Twitter)",
+      "en": "X(formerly Twitter)",
+      "fr": "X(anciennement Twitter)"
+    },
+    "emailPrivate": {
+      "ja": "メールは非公開です",
+      "en": "Email is private",
+      "fr": "L'email est privé"
+    }
+  },
+  "portfolio": {
+    "title": {
+      "ja": "ポートフォリオ",
+      "en": "Portfolio",
+      "fr": "Portefeuille"
+    },
+    "description": {
+      "ja": "エンジニア、クリエイターの作品集",
+      "en": "Engineer and creator portfolio",
+      "fr": "Portefeuille d'ingénieur et créateur"
+    },
+    "followMe": {
+      "ja": "フォローしてね",
+      "en": "Follow me",
+      "fr": "Suivez-moi"
     }
   }
 }

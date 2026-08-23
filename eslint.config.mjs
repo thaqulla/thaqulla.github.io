@@ -1,18 +1,18 @@
-import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
-import nextTypescript from "eslint-config-next/typescript";
+import eslint from "@eslint/js";
+import tseslint from "typescript-eslint";
 
-const eslintConfig = [
-  ...nextCoreWebVitals,
-  ...nextTypescript,
+const eslintConfig = tseslint.config(
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
   {
     ignores: [
       "node_modules/**",
-      ".next/**",
       "out/**",
+      "dist/**",
+      ".tanstack/**",
       "build/**",
-      "next-env.d.ts",
     ],
   },
-];
+);
 
 export default eslintConfig;

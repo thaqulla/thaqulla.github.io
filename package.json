@@ -2,30 +2,34 @@
   "name": "github_pages",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "start": "next start",
+    "dev": "vite dev",
+    "build": "vite build && tsc --noEmit",
+    "start": "vite preview",
     "format": "prettier --write .",
     "lint": "eslint ."
   },
   "dependencies": {
     "@chakra-ui/react": "^3.28.0",
     "@emotion/react": "^11.14.0",
-    "dotenv": "^17.2.3",
-    "next": "15.5.6",
-    "next-themes": "^0.4.6",
+    "@tanstack/react-router": "^1.132.0",
+    "@tanstack/react-start": "^1.132.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "vite": "^7.1.7"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/node": "^24.9.2",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19",
-    "eslint-config-next": "^16.0.1",
+    "@vitejs/plugin-react": "^5.0.4",
+    "eslint": "^9.39.1",
     "prettier": "^3.6.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.3"
   }
 }

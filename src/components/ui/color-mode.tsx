@@ -3,18 +3,44 @@
 import * as React from "react";
 import { LuMoon, LuSun } from "react-icons/lu";
 
-import { ThemeProvider, useTheme } from "next-themes";
-import type { ThemeProviderProps } from "next-themes";
-
 import type { IconButtonProps, SpanProps } from "@chakra-ui/react";
 import { ClientOnly, IconButton, Skeleton, Span } from "@chakra-ui/react";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface ColorModeProviderProps extends ThemeProviderProps {}
+export interface ColorModeProviderProps {
+  children: React.ReactNode;
+}
 
-export function ColorModeProvider(props: ColorModeProviderProps) {
+export function ColorModeProvider({ children }: ColorModeProviderProps) {
+  const [colorMode, setColorMode] = React.useState<ColorMode>("light");
+
+  React.useEffect(() => {
+    const storedMode = window.localStorage.getItem("color-mode");
+    const preferredMode = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+    const initialMode = storedMode === "dark" || storedMode === "light"
+      ? storedMode
+      : preferredMode;
+
+    setColorMode(initialMode);
+  }, []);
+
+  React.useEffect(() => {
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(colorMode);
+    window.localStorage.setItem("color-mode", colorMode);
+  }, [colorMode]);
+
+  const toggleColorMode = () =>
+    setColorMode((currentMode) => (currentMode === "dark" ? "light" : "dark"));
+
   return (
-    <ThemeProvider attribute="class" disableTransitionOnChange {...props} />
+    <ColorModeContext.Provider
+      value={{ colorMode, setColorMode, toggleColorMode }}
+    >
+      {children}
+    </ColorModeContext.Provider>
   );
 }
 
@@ -26,17 +52,15 @@ export interface UseColorModeReturn {
   toggleColorMode: () => void;
 }
 
+const ColorModeContext = React.createContext<UseColorModeReturn | undefined>(
+  undefined,
+);
+
 export function useColorMode(): UseColorModeReturn {
-  const { resolvedTheme, setTheme, forcedTheme } = useTheme();
-  const colorMode = forcedTheme || resolvedTheme;
-  const toggleColorMode = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
-  };
-  return {
-    colorMode: colorMode as ColorMode,
-    setColorMode: setTheme,
-    toggleColorMode,
-  };
+  const context = React.useContext(ColorModeContext);
+  if (!context) throw new Error("useColorMode must be used within ColorModeProvider");
+
+  return context;
 }
 
 export function useColorModeValue<T>(light: T, dark: T) {
@@ -49,8 +73,7 @@ export function ColorModeIcon() {
   return colorMode === "dark" ? <LuMoon /> : <LuSun />;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface ColorModeButtonProps extends Omit<IconButtonProps, "aria-label"> {}
+type ColorModeButtonProps = Omit<IconButtonProps, "aria-label">;
 
 export const ColorModeButton = React.forwardRef<
   HTMLButtonElement,

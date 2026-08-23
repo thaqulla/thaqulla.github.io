@@ -1,8 +1,8 @@
-module.exports = {
+export default {
   plugins: ["@trivago/prettier-plugin-sort-imports"],
   importOrder: [
     "^react",
-    "^next",
+    "^@tanstack",
     "<THIRD_PARTY_MODULES>",
     "^@/app/(.*)",
     "^@/components/(.*)",
